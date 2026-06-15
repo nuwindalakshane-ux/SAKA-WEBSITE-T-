@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const U = 'https://images.unsplash.com'
-
 const fade = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0 } }
 
 const premiumTiers = [

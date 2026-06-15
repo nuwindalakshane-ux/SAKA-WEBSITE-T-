@@ -32,11 +32,16 @@ export default function Footer() {
       <div>
         <p style={{ fontSize: 'clamp(0.6rem, 1.5vw, 0.65rem)', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '1.25rem' }}>Connect</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-          {['Instagram', 'TikTok', 'Facebook', 'hello@sakaphoto.com'].map(item => (
-            <a key={item} href="#" style={{ fontSize: 'clamp(0.75rem, 1.8vw, 0.8rem)', color: 'var(--text-secondary)', letterSpacing: '0.05em', transition: 'color 0.3s', wordBreak: 'break-all' }}
+          {[
+            { name: 'Instagram', url: 'https://www.instagram.com/sakaphoto/' }, 
+            { name: 'TikTok', url: 'https://www.tiktok.com/@sakaphoto' },
+            { name: 'Facebook', url: 'https://www.facebook.com/sakaphoto' },
+            { name: 'Email', url: 'mailto:hello@sakaphoto.com' }
+          ].map(item => (
+            <a key={item.name} href={item.url} style={{ fontSize: 'clamp(0.75rem, 1.8vw, 0.8rem)', color: 'var(--text-secondary)', letterSpacing: '0.05em', transition: 'color 0.3s', wordBreak: 'break-all' }}
               onMouseEnter={e => (e.target as HTMLElement).style.color = 'var(--cream)'}
               onMouseLeave={e => (e.target as HTMLElement).style.color = 'var(--text-secondary)'}
-            >{item}</a>
+            >{item.name}</a>
           ))}
         </div>
       </div>
