@@ -2,7 +2,6 @@ import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
-const UNSPLASH = 'https://images.unsplash.com'
 
 const heroImg = '/images/hero.jpg' // Local hero image for better control over composition and loading
 const couple1 = '/images/couple1.jpg' // Local image to ensure optimal cropping and aspect ratio

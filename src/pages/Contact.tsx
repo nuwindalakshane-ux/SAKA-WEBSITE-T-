@@ -1,5 +1,11 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import emailjs from '@emailjs/browser'
+
+// Initialize EmailJS with environment variable
+if (import.meta.env.VITE_EMAILJS_PUBLIC_KEY) {
+  emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY)
+}
 
 const fade = { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0 } }
 
@@ -28,9 +34,45 @@ export default function Contact() {
 
   const update = (key: keyof FormData, val: string) => setForm(f => ({ ...f, [key]: val }))
 
-  const handleSubmit = () => {
-    if (!form.name || !form.email) return
-    setSent(true)
+  const handleSubmit = async () => {
+    if (!form.name || !form.email) {
+      alert('Please fill in your name and email')
+      return
+    }
+
+    // Check if EmailJS credentials are configured
+    if (!import.meta.env.VITE_EMAILJS_SERVICE_ID || !import.meta.env.VITE_EMAILJS_TEMPLATE_ID) {
+      alert('Email service is not configured. Please contact the administrator.')
+      return
+    }
+
+    try {
+      // Send email to yourself
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          to_email: 'studiodfocus10@gmail.com', // Your email
+          from_name: form.name,
+          from_email: form.email,
+          partner_name: form.partner,
+          wedding_date: form.date,
+          package: form.package,
+          venue: form.venue,
+          message: form.message,
+        }
+      )
+
+      setSent(true)
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setForm({ name: '', email: '', partner: '', date: '', venue: '', package: '', message: '' })
+        setSent(false)
+      }, 3000)
+    } catch (error) {
+      console.error('Error sending email:', error)
+      alert('Error sending message. Please try again.')
+    }
   }
 
   const inputStyle = {

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const U = 'https://images.unsplash.com'
 
 const categories = ['All', 'Traditional', 'Engagement', 'Homecoming', 'Events', 'Birthdays' ]
 

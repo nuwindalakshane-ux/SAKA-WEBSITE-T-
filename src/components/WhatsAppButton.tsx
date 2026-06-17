@@ -9,7 +9,7 @@ export default function WhatsAppButton() {
   }, [])
 
   const whatsappNumber = '94763200883'
-  const message = "Hi Saka Photography! I'm interested in learning more about your wedding photography packages."
+  const message = "Hi Sakshmina Dinushan Photography! I'm interested in learning more about your wedding photography packages."
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`
 
   return (
