@@ -1,7 +1,9 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import AboutSection from '../components/AboutSection'
 
+const UNSPLASH = 'https://images.unsplash.com'
 
 const heroImg = '/images/hero.jpg' // Local hero image for better control over composition and loading
 const couple1 = '/images/couple1.jpg' // Local image to ensure optimal cropping and aspect ratio
@@ -112,6 +114,9 @@ export default function Home() {
           >View All Work</Link>
         </motion.div>
       </section>
+
+      {/* ─── ABOUT ─── */}
+      <AboutSection />
 
       {/* ─── OFFERINGS PREVIEW ─── */}
       <section style={{ background: 'var(--surface)', padding: 'clamp(3rem, 10vw, 9rem) clamp(1rem, 5vw, 5rem)' }}>
