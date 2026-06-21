@@ -1,0 +1,22 @@
+# Netlify Configuration for SAKA Website
+
+[build]
+  command = "npm run build"
+  functions = "netlify/functions"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirect rules for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Environment variables (set these in Netlify dashboard)
+[env]
+  [env.production]
+    # VITE_EMAILJS_PUBLIC_KEY = your_public_key
+    # VITE_EMAILJS_SERVICE_ID = your_service_id
+    # VITE_EMAILJS_TEMPLATE_ID = your_template_id
